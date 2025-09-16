@@ -6,7 +6,12 @@
     <router-link class="btn btn-outline-primary" :to="{ name: 'About' }">
       About
     </router-link>
-
+    <router-link class="btn btn-outline-primary" :to="{ name: 'FireLogin' }">
+      Firebase Login
+    </router-link>
+    <router-link class="btn btn-outline-primary" :to="{ name: 'FireRegister' }">
+      Register
+    </router-link>
     <router-link
       v-if="!isAuthenticated"
       class="btn btn-primary"
