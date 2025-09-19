@@ -39,12 +39,7 @@
       </div>
     </div>
 
-    <div class="card shadow-sm">
-      <div class="card-header fw-semibold">Books with ISBN &gt; 1000</div>
-      <div class="card-body">
-        <BookList />
-      </div>
-    </div>
+    <BookList class="mt-3" />
   </div>
 </template>
 
