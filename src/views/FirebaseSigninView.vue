@@ -28,7 +28,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { auth } from '../firebase'
+import { auth } from '../firebase/firebase'
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth'
 
 const router = useRouter()
@@ -39,7 +39,7 @@ const ok = ref(false)
 
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
-    console.log('🔥 current user:', user) // 作业要求：控制台展示当前用户
+    console.log('🔥 current user:', user) 
   })
 })
 

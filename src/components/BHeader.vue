@@ -12,11 +12,10 @@
     <router-link class="btn btn-outline-primary" :to="{ name: 'FireRegister' }">
       Register
     </router-link>
-    <router-link
-      v-if="!isAuthenticated"
-      class="btn btn-primary"
-      :to="{ name: 'Login' }"
-    >
+    <router-link v-if="isLoggedIn" class="btn btn-outline-primary" :to="{ name: 'AddBook' }">
+      Add Book
+    </router-link>
+    <router-link v-if="!isLoggedIn" class="btn btn-primary" :to="{ name: 'Login' }">
       Login
     </router-link>
     <button v-else class="btn btn-secondary" @click="handleLogout">
@@ -27,11 +26,19 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
-import { isAuthenticated, logout } from '../stores/auth'
+import { auth } from '../firebase/firebase'
+import { ref, onMounted } from 'vue'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+
 
 const router = useRouter()
-function handleLogout() {
-  logout()
+const isLoggedIn = ref(false)
+
+onMounted(() => {
+  onAuthStateChanged(auth, (u) => { isLoggedIn.value = !!u })
+})
+async function handleLogout() {
+  await signOut(auth)
   router.push({ name: 'Login' })
 }
 </script>

@@ -23,7 +23,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { auth } from '../firebase'
+import { auth } from '../firebase/firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 const router = useRouter()
