@@ -15,9 +15,14 @@
     <router-link v-if="isLoggedIn" class="btn btn-outline-primary" :to="{ name: 'AddBook' }">
       Add Book
     </router-link>
+    <router-link class="btn btn-outline-primary" :to="{ name: 'GetBookCount' }">
+      Get Book Count
+    </router-link>
     <router-link v-if="!isLoggedIn" class="btn btn-primary" :to="{ name: 'Login' }">
       Login
     </router-link>
+    
+
     <button v-else class="btn btn-secondary" @click="handleLogout">
       Logout
     </button>

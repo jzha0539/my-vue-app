@@ -7,6 +7,7 @@ import { isAuthenticated } from '../stores/auth'
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
 import AddBookView from '../views/AddBookView.vue'
+import GetBookCountView from '../views/GetBookCountView.vue'
 
 const routes = [
   { path: '/FireLogin', name: 'FireLogin', component: FirebaseSigninView},
@@ -18,6 +19,7 @@ const routes = [
   { path: '/firelogin', name: 'FireLogin', component: FirebaseSigninView },    
   { path: '/fireregister', name: 'FireRegister', component: FirebaseRegisterView },
   { path: '/denied', name: 'Denied', component: AccessDenied },
+  { path: '/GetBookCount', name: 'GetBookCount', component: GetBookCountView },
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ]
 
