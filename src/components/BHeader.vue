@@ -18,6 +18,12 @@
     <router-link class="btn btn-outline-primary" :to="{ name: 'GetBookCount' }">
       Get Book Count
     </router-link>
+    <router-link v-if="isLoggedIn" :to="{ name: 'GetAllBookAPI' }" class="btn btn-outline-primary mx-1" :class="{ active: $route.name === 'GetAllBookAPI' }">
+      GetAllBookAPI
+    </router-link>
+    <router-link class="btn btn-outline-primary" to="/weather">
+      Weather
+    </router-link>
     <router-link v-if="!isLoggedIn" class="btn btn-primary" :to="{ name: 'Login' }">
       Login
     </router-link>
