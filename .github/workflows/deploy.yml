@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
-    
+
 permissions:
   contents: write
 
@@ -28,6 +28,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Set publicPath for GH Pages
+        run: echo "PUBLIC_PATH=/my-vue-app/" >> $GITHUB_ENV
 
       - name: Build
         run: npm run build
