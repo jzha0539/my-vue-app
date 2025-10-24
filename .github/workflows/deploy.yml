@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          VUE_APP_OPENWEATHER_KEY: ${{ secrets.VUE_APP_OPENWEATHER_KEY }}
+          VUE_APP_ALLBOOKS_URL: ${{ secrets.VUE_APP_ALLBOOKS_URL }}
+        run: npm run build
+
+      - name: SPA fallback for GitHub Pages
+        run: cp dist/index.html dist/404.html
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.1.4
+        with:
+          branch: gh-pages
+          folder: dist
+
+    permissions:
+      contents: write
